@@ -3,7 +3,6 @@ package publishers
 import (
 	"bytes"
 	"fmt"
-	"github.com/sergeo17/basicgo/handlers"
 	"github.com/streadway/amqp"
 	"log"
 	"os"
