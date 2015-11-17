@@ -1,7 +1,7 @@
 package main
 
 import (
-	"basicGo/controllers"
+	"github.com/Sergeo17/basicGo/controllers"
 	"net/http"
 )
 

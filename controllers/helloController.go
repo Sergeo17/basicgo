@@ -1,10 +1,10 @@
 package controllers
 
 import (
-	"basicGo/models"
-	"basicGo/publishers"
 	"bytes"
 	"encoding/json"
+	"github.com/Sergeo17/basicgo/models"
+	"github.com/Sergeo17/basicgo/publishers"
 	"github.com/gorilla/mux"
 	"net/http"
 )
