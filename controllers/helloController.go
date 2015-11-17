@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"github.com/Sergeo17/basicgo/models"
-	"github.com/Sergeo17/basicgo/publishers"
+	//"github.com/Sergeo17/basicgo/publishers"
 	"github.com/gorilla/mux"
 	"net/http"
 )
@@ -24,7 +24,7 @@ func GetGreetingByName(w http.ResponseWriter, r *http.Request) {
 		resp := buffer.String()
 
 		//publish to rabbitMQ
-		publishers.PublishMessage(resp)
+		//publishers.PublishMessage(resp)
 
 		w.WriteHeader(http.StatusOK)
 		if err := json.NewEncoder(w).Encode(resp); err != nil {
