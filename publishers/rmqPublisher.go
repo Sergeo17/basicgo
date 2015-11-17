@@ -6,6 +6,8 @@ import (
 	"github.com/streadway/amqp"
 	"log"
 	"os"
+
+	"github.com/Sergeo17/basicgo/helpers"
 )
 
 func failOnError(err error, msg string) {
@@ -23,9 +25,11 @@ func PublishMessage(msg string) {
 	buffer.WriteString(rmqenv)
 	buffer.WriteString(":5672")
 
-	log.Printf("Dialing %s", buffer.String())
+	dialaddr := helpers.StringConcat("amqp://guest:guest@", rmqenv, ":5672")
 
-	conn, err := amqp.Dial(buffer.String())
+	log.Printf("Dialing %s", dialaddr)
+
+	conn, err := amqp.Dial(dialaddr)
 	failOnError(err, "failed to connect to rabbitmq")
 	defer conn.Close()
 
