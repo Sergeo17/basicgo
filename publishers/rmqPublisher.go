@@ -1,10 +1,12 @@
 package publishers
 
 import (
+	"bytes"
 	"fmt"
-	"log"
-
+	"github.com/sergeo17/basicgo/handlers"
 	"github.com/streadway/amqp"
+	"log"
+	"os"
 )
 
 func failOnError(err error, msg string) {
@@ -15,7 +17,13 @@ func failOnError(err error, msg string) {
 }
 
 func PublishMessage(msg string) {
-	conn, err := amqp.Dial("amqp://guest:guest@192.168.99.100:5672/")
+
+	rmqenv := os.Getenv("RABBITMQ_PORT_5672_TCP")
+	var buffer bytes.Buffer
+	buffer.WriteString("amqp://guest:guest@")
+	buffer.WriteString(rmqenv)
+
+	conn, err := amqp.Dial(buffer.String())
 	failOnError(err, "failed to connect to rabbitmq")
 	defer conn.Close()
 
