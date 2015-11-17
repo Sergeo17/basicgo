@@ -1,0 +1,3 @@
+development:
+  driver: postgres
+  open: host=$POSTGRES_PORT_5432_TCP_ADDR user=dev dbname=ftb sslmode=disable

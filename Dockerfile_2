@@ -1,0 +1,15 @@
+FROM golang
+
+RUN mkdir -p /go/src/apiPub
+WORKDIR /go/src/apiPub
+
+RUN go get bitbucket.org/liamstask/goose/cmd/goose
+
+CMD ["go-wrapper", "run"]
+
+ONBUILD COPY . /go/src/apiPub
+ONBUILD RUN go-wrapper download
+ONBUILD RUN go-wrapper install
+
+ENTRYPOINT /go/bin/apiPub
+EXPOSE 4000
