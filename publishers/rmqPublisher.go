@@ -17,7 +17,7 @@ func failOnError(err error, msg string) {
 
 func PublishMessage(msg string) {
 
-	rmqenv := os.Getenv("RABBITMQ_PORT_5672_TCP")
+	rmqenv := os.Getenv("RABBITMQ_PORT_5672_TCP_ADDR")
 	var buffer bytes.Buffer
 	buffer.WriteString("amqp://guest:guest@")
 	buffer.WriteString(rmqenv)
