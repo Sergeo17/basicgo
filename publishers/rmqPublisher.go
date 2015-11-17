@@ -21,6 +21,9 @@ func PublishMessage(msg string) {
 	var buffer bytes.Buffer
 	buffer.WriteString("amqp://guest:guest@")
 	buffer.WriteString(rmqenv)
+	buffer.WriteString(":5672")
+
+	log.Printf("Dialing %s", buffer.String())
 
 	conn, err := amqp.Dial(buffer.String())
 	failOnError(err, "failed to connect to rabbitmq")

@@ -21,4 +21,10 @@ var routes = Routes{
 		"/hello/{name}",
 		controllers.GetGreetingByName,
 	},
+	Route{
+		"Get Root",
+		"GET",
+		"/",
+		controllers.GetRoute,
+	},
 }
